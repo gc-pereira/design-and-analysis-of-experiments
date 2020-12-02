@@ -130,14 +130,17 @@ sx= sd(res)
 ks.test(res, "pnorm", xb, sx,alternative='two.sided')
 ad.test(res)
 j= paste(A,B)
-leveneTest(Y~j)
+leveneTest(model)
+bartlett.test(data)
 
 #Resultados da ANOVA
 anova(model)
 
 #Comparacoes multiplas de Tukey para Beta
 compar=TukeyHSD(x=model, 'B', conf.level=0.95)
-compar
+plot(compar)
+
+mean(Y)
 
 compar2 = TukeyHSD(x=model, 'A', conf.level = 0.99)
 compar2
